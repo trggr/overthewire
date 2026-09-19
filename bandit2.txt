@@ -1,0 +1,6 @@
+vi
+:r --spaces in this filename--
+
+password for bandit3: 7ZZ2LFrykP2zEyvBl4m3clcL7tGYJPME
+
+
