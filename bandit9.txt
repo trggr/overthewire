@@ -1,0 +1,10 @@
+
+bandit9@bandit:~$ strings data.txt | grep ==
+cL0========== the
+========== password
+>========== is
+R========== B0s2khmbT9u0geKuOoVGW3JZKhndE3BG
+
+password for bandit10: B0s2khmbT9u0geKuOoVGW3JZKhndE3BG
+
+

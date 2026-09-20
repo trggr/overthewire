@@ -1,0 +1,9 @@
+
+bandit7@bandit:~$ grep -B 1 -A 1 millionth data.txt 
+acceptability's	zx44nH67db6OdA1TUBs2dlUytwd9RzAq
+millionth	VR1ljMayciFxbnUokuQmJFw6QC9VKtub
+hobby's	VpeHl7tFfP09gw0RMWydsZHu0cNOvy4N
+
+password for bandit8: VR1ljMayciFxbnUokuQmJFw6QC9VKtub
+
+

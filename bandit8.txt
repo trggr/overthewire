@@ -1,0 +1,16 @@
+cat << 'EOF' > /tmp/a.awk
+{
+	arr[$1] += 1;
+}
+END {
+	for (i in arr) {
+		print arr[i], i;
+	}
+}
+EOF
+
+bandit8@bandit:/tmp$ awk -f a.awk ~/data.txt | grep "1 "
+1 EjmOSvuAu7sGAHqHVcBDPirRe9T03kxl
+
+password for bandit9: EjmOSvuAu7sGAHqHVcBDPirRe9T03kxl
+
