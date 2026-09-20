@@ -1,0 +1,14 @@
+cd inhere
+cat << 'EOF' > /tmp/a.sh
+for f in *
+do
+   echo $f
+   cat -- $f
+done
+EOF
+
+cat -- -file07
+
+password for bandit5: 6C7h9GD8M6ai5nr7wo1RonrzFjj9yIrG
+
+

@@ -1,0 +1,21 @@
+
+cat << 'EOF' > /tmp/a.sh
+LIST=/tmp/ascii_files
+
+find inhere -type f -exec file '{}' \; | \
+	  grep "ASCII text" | \
+	  awk -F: '{print $1}' > $LIST
+
+while IFS= read -r f; do
+    grep -H '^................................$' "$f"
+done < $LIST
+EOF
+
+bash /tmp/a.sh
+
+This returns:
+    inhere/maybehere07/.file2:pXa26xhMWaC2SvDotA4r9EgZkulOeSBW
+
+password for bandit6: pXa26xhMWaC2SvDotA4r9EgZkulOeSBW
+
+
