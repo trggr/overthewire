@@ -1,0 +1,7 @@
+
+tim@astrazeek:~$ ssh -p 2220 bandit18@bandit.labs.overthewire.org "cat readme"
+bandit18@bandit.labs.overthewire.org's password: 
+KpsOfPkcP7i1FlIExk2QEjyt6dw8dxZI
+
+password for bandit19: KpsOfPkcP7i1FlIExk2QEjyt6dw8dxZI
+

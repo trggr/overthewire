@@ -1,0 +1,16 @@
+
+bandit17@bandit:~$ diff -u passwords.old passwords.new
+--- passwords.old	2026-06-24 14:59:05.720216891 +0000
++++ passwords.new	2026-06-24 14:59:05.729216953 +0000
+@@ -39,7 +39,7 @@
+ WS7ZYy5dkQU2HszspimE1PBFvTnnTIdq
+ YmlAiM0IxlMIhkEGnZLXEgfCSa5uiveW
+ ir5rFokIO7Bx7owpnvtzRSjLIFokGja4
+-icUh23IUytZLIYhcCaXL18agiSIqymBc
++OQxXZjELndr90zuhOTDYBEomI0SZITXI
+ feFMETh6GGUxqub2NLUoVB1b7es1tvgP
+ 5H10Ic1HGMJrGkOaOupreXOQPiPHEdNo
+ MeMYkVJ2TsxCIRaVxTZWicVfKptZHI4g
+
+password for bandit18: OQxXZjELndr90zuhOTDYBEomI0SZITXI
+

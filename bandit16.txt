@@ -1,0 +1,383 @@
+tim@astrazeek:~$ ssh -p 2220 bandit16@bandit.labs.overthewire.org
+
+bandit16@bandit:~$ nmap -p 31000-32000 localhost
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-09-20 23:14 +0000
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000093s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 996 closed tcp ports (conn-refused)
+PORT      STATE SERVICE
+31046/tcp open  unknown
+31518/tcp open  unknown
+31691/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.06 seconds
+bandit16@bandit:~$ openssl s_client -connect localhost:31046
+Connecting to 127.0.0.1
+CONNECTED(00000003)
+40D7E7F7FF7F0000:error:0A0000F4:SSL routines:ossl_statem_client_read_transition:unexpected message:../ssl/statem/statem_clnt.c:423:
+---
+no peer certificate available
+---
+No client certificate CA names sent
+Negotiated TLS1.3 group: <NULL>
+---
+SSL handshake has read 1533 bytes and written 1540 bytes
+Verification: OK
+---
+New, (NONE), Cipher is (NONE)
+Protocol: TLSv1.3
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+---
+bandit16@bandit:~$ openssl s_client -connect localhost:31518
+Connecting to 127.0.0.1
+CONNECTED(00000003)
+Can't use SSL_get_servername
+depth=0 CN=SnakeOil
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 CN=SnakeOil
+verify return:1
+---
+Certificate chain
+ 0 s:CN=SnakeOil
+   i:CN=SnakeOil
+   a:PKEY: RSA, 4096 (bit); sigalg: sha256WithRSAEncryption
+   v:NotBefore: Jun 10 03:59:50 2024 GMT; NotAfter: Jun  8 03:59:50 2034 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIFBzCCAu+gAwIBAgIUBLz7DBxA0IfojaL/WaJzE6Sbz7cwDQYJKoZIhvcNAQEL
+BQAwEzERMA8GA1UEAwwIU25ha2VPaWwwHhcNMjQwNjEwMDM1OTUwWhcNMzQwNjA4
+MDM1OTUwWjATMREwDwYDVQQDDAhTbmFrZU9pbDCCAiIwDQYJKoZIhvcNAQEBBQAD
+ggIPADCCAgoCggIBANI+P5QXm9Bj21FIPsQqbqZRb5XmSZZJYaam7EIJ16Fxedf+
+jXAv4d/FVqiEM4BuSNsNMeBMx2Gq0lAfN33h+RMTjRoMb8yBsZsC063MLfXCk4p+
+09gtGP7BS6Iy5XdmfY/fPHvA3JDEScdlDDmd6Lsbdwhv93Q8M6POVO9sv4HuS4t/
+jEjr+NhE+Bjr/wDbyg7GL71BP1WPZpQnRE4OzoSrt5+bZVLvODWUFwinB0fLaGRk
+GmI0r5EUOUd7HpYyoIQbiNlePGfPpHRKnmdXTTEZEoxeWWAaM1VhPGqfrB/Pnca+
+vAJX7iBOb3kHinmfVOScsG/YAUR94wSELeY+UlEWJaELVUntrJ5HeRDiTChiVQ++
+wnnjNbepaW6shopybUF3XXfhIb4NvwLWpvoKFXVtcVjlOujF0snVvpE+MRT0wacy
+tHtjZs7Ao7GYxDz6H8AdBLKJW67uQon37a4MI260ADFMS+2vEAbNSFP+f6ii5mrB
+18cY64ZaF6oU8bjGK7BArDx56bRc3WFyuBIGWAFHEuB948BcshXY7baf5jjzPmgz
+mq1zdRthQB31MOM2ii6vuTkheAvKfFf+llH4M9SnES4NSF2hj9NnHga9V08wfhYc
+x0W6qu+S8HUdVF+V23yTvUNgz4Q+UoGs4sHSDEsIBFqNvInnpUmtNgcR2L5PAgMB
+AAGjUzBRMB0GA1UdDgQWBBTPo8kfze4P9EgxNuyk7+xDGFtAYzAfBgNVHSMEGDAW
+gBTPo8kfze4P9EgxNuyk7+xDGFtAYzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3
+DQEBCwUAA4ICAQAKHomtmcGqyiLnhziLe97Mq2+Sul5QgYVwfx/KYOXxv2T8ZmcR
+Ae9XFhZT4jsAOUDK1OXx9aZgDGJHJLNEVTe9zWv1ONFfNxEBxQgP7hhmDBWdtj6d
+taqEW/Jp06X+08BtnYK9NZsvDg2YRcvOHConeMjwvEL7tQK0m+GVyQfLYg6jnrhx
+egH+abucTKxabFcWSE+Vk0uJYMqcbXvB4WNKz9vj4V5Hn7/DN4xIjFko+nREw6Oa
+/AUFjNnO/FPjap+d68H1LdzMH3PSs+yjGid+6Zx9FCnt9qZydW13Miqg3nDnODXw
++Z682mQFjVlGPCA5ZOQbyMKY4tNazG2n8qy2famQT3+jF8Lb6a4NGbnpeWnLMkIu
+jWLWIkA9MlbdNXuajiPNVyYIK9gdoBzbfaKwoOfSsLxEqlf8rio1GGcEV5Hlz5S2
+txwI0xdW9MWeGWoiLbZSbRJH4TIBFFtoBG0LoEJi0C+UPwS8CDngJB4TyrZqEld3
+rH87W+Et1t/Nepoc/Eoaux9PFp5VPXP+qwQGmhir/hv7OsgBhrkYuhkjxZ8+1uk7
+tUWC/XM0mpLoxsq6vVl3AJaJe1ivdA9xLytsuG4iv02Juc593HXYR8yOpow0Eq2T
+U5EyeuFg5RXYwAPi7ykw1PW7zAPL4MlonEVz+QXOSx6eyhimp1VZC11SCg==
+-----END CERTIFICATE-----
+subject=CN=SnakeOil
+issuer=CN=SnakeOil
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: rsa_pss_rsae_sha256
+Negotiated TLS1.3 group: X25519MLKEM768
+---
+SSL handshake has read 3191 bytes and written 1613 bytes
+Verification error: self-signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Protocol: TLSv1.3
+Server public key is 4096 bit
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self-signed certificate)
+---
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 58048B458A438BEC894C336CC1D78C928FFC7515A25AA49E15A699681928E20C
+    Session-ID-ctx: 
+    Resumption PSK: 11E4825EEA9ADF1B97725BE7B4E69765E4033130304FBB42272C05108264BD526A7B437DCE8DA5D95295C44DA3A080DA
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - e2 ac ee 2b ec c4 ab 07-97 13 6d 4e 14 30 95 ba   ...+......mN.0..
+    0010 - 70 27 26 77 fc db d4 8d-72 52 93 7b fc 82 4a c7   p'&w....rR.{..J.
+    0020 - 0e c9 d0 f9 40 19 e3 12-05 1b 85 e5 de 9e c0 5e   ....@..........^
+    0030 - af 9e 33 86 8a c6 c2 44-ec f8 ce 90 3b 79 e0 53   ..3....D....;y.S
+    0040 - 8c e3 2e be 54 8f 02 4a-cd 48 6d 2c 91 d2 e4 f8   ....T..J.Hm,....
+    0050 - cd 5b db 4e a3 44 7f 5b-b5 26 5a 1b a8 a5 de ff   .[.N.D.[.&Z.....
+    0060 - 18 d7 9c 7c 53 7f cc a0-d9 e5 d7 de 75 ca c8 7d   ...|S.......u..}
+    0070 - 1e 85 56 f7 d3 15 b6 01-64 1b 6c 79 52 ae 72 29   ..V.....d.lyR.r)
+    0080 - a9 8a ca aa d4 a6 f3 72-37 43 7d 10 99 11 bd 9c   .......r7C}.....
+    0090 - ec 58 7a 01 7f 60 c1 2f-42 a6 b3 1d 22 5c 65 ec   .Xz..`./B..."\e.
+    00a0 - ab bd 31 9a 57 36 c8 13-3e 05 07 6e f4 c8 1c db   ..1.W6..>..n....
+    00b0 - 85 ec 04 a2 ee 62 94 e7-4e 04 49 f0 cd ac 29 cf   .....b..N.I...).
+    00c0 - a8 ea 87 0e 94 59 d1 33-dc 94 46 30 b4 79 66 51   .....Y.3..F0.yfQ
+    00d0 - 9c 6b 81 d6 8e a9 7b 2f-a9 ad db 49 7c 8b f9 b8   .k....{/...I|...
+
+    Start Time: 1789946310
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 3DF7E9C4944CC8E4A1A78D4586A059F6A955471FA6FE1EBA978132B4FAD64724
+    Session-ID-ctx: 
+    Resumption PSK: 73E52B94CF16568B90AEE4605EB833B9E56F3F307E9FBA1C2D5E87DBEE9F501C8BFDB51B9A7650CA54B230BD53ADD545
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - e2 ac ee 2b ec c4 ab 07-97 13 6d 4e 14 30 95 ba   ...+......mN.0..
+    0010 - 49 97 27 a0 6b 57 b3 7c-02 bd 3d 45 af 4c a5 9f   I.'.kW.|..=E.L..
+    0020 - d0 af 24 cf 46 39 19 95-57 76 80 02 d4 19 dc 0c   ..$.F9..Wv......
+    0030 - bc 59 84 d4 30 da ac 36-07 4d 2e 35 70 cd a9 b8   .Y..0..6.M.5p...
+    0040 - 3e b6 d0 86 f6 d5 ed e0-e3 16 80 b9 b0 54 fe c9   >............T..
+    0050 - 02 0b 30 6a 8e bb 6e 71-d1 3e 7c 41 dc 22 c4 48   ..0j..nq.>|A.".H
+    0060 - f7 39 aa 11 69 92 5e 2b-9d e5 3e cb 5c 54 0c e9   .9..i.^+..>.\T..
+    0070 - ef c6 ea 46 ed 28 08 29-bc 5f b4 ab 8b 2a 28 c6   ...F.(.)._...*(.
+    0080 - 87 3e a5 b1 dd 10 61 ce-80 19 7b 5b 04 a9 f6 4b   .>....a...{[...K
+    0090 - d4 1f 10 48 b9 ee c1 07-db bc 64 65 2e 9c 84 35   ...H......de...5
+    00a0 - bd bd 09 5e 33 ed 07 35-b4 5b 1e 97 df 23 b1 a8   ...^3..5.[...#..
+    00b0 - e3 ca 61 42 eb a5 88 62-24 78 1b 5d 61 0b 90 08   ..aB...b$x.]a...
+    00c0 - 66 13 52 6a 31 de 88 28-10 e8 e4 72 80 b8 db 45   f.Rj1..(...r...E
+    00d0 - 21 28 57 a6 30 b1 ed cc-99 d6 fe 65 16 f7 df c0   !(W.0......e....
+
+    Start Time: 1789946310
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+a
+a
+closed
+bandit16@bandit:~$ openssl s_client -connect localhost:31518
+Connecting to 127.0.0.1
+CONNECTED(00000003)
+Can't use SSL_get_servername
+depth=0 CN=SnakeOil
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 CN=SnakeOil
+verify return:1
+---
+Certificate chain
+ 0 s:CN=SnakeOil
+   i:CN=SnakeOil
+   a:PKEY: RSA, 4096 (bit); sigalg: sha256WithRSAEncryption
+   v:NotBefore: Jun 10 03:59:50 2024 GMT; NotAfter: Jun  8 03:59:50 2034 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIFBzCCAu+gAwIBAgIUBLz7DBxA0IfojaL/WaJzE6Sbz7cwDQYJKoZIhvcNAQEL
+BQAwEzERMA8GA1UEAwwIU25ha2VPaWwwHhcNMjQwNjEwMDM1OTUwWhcNMzQwNjA4
+MDM1OTUwWjATMREwDwYDVQQDDAhTbmFrZU9pbDCCAiIwDQYJKoZIhvcNAQEBBQAD
+ggIPADCCAgoCggIBANI+P5QXm9Bj21FIPsQqbqZRb5XmSZZJYaam7EIJ16Fxedf+
+jXAv4d/FVqiEM4BuSNsNMeBMx2Gq0lAfN33h+RMTjRoMb8yBsZsC063MLfXCk4p+
+09gtGP7BS6Iy5XdmfY/fPHvA3JDEScdlDDmd6Lsbdwhv93Q8M6POVO9sv4HuS4t/
+jEjr+NhE+Bjr/wDbyg7GL71BP1WPZpQnRE4OzoSrt5+bZVLvODWUFwinB0fLaGRk
+GmI0r5EUOUd7HpYyoIQbiNlePGfPpHRKnmdXTTEZEoxeWWAaM1VhPGqfrB/Pnca+
+vAJX7iBOb3kHinmfVOScsG/YAUR94wSELeY+UlEWJaELVUntrJ5HeRDiTChiVQ++
+wnnjNbepaW6shopybUF3XXfhIb4NvwLWpvoKFXVtcVjlOujF0snVvpE+MRT0wacy
+tHtjZs7Ao7GYxDz6H8AdBLKJW67uQon37a4MI260ADFMS+2vEAbNSFP+f6ii5mrB
+18cY64ZaF6oU8bjGK7BArDx56bRc3WFyuBIGWAFHEuB948BcshXY7baf5jjzPmgz
+mq1zdRthQB31MOM2ii6vuTkheAvKfFf+llH4M9SnES4NSF2hj9NnHga9V08wfhYc
+x0W6qu+S8HUdVF+V23yTvUNgz4Q+UoGs4sHSDEsIBFqNvInnpUmtNgcR2L5PAgMB
+AAGjUzBRMB0GA1UdDgQWBBTPo8kfze4P9EgxNuyk7+xDGFtAYzAfBgNVHSMEGDAW
+gBTPo8kfze4P9EgxNuyk7+xDGFtAYzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3
+DQEBCwUAA4ICAQAKHomtmcGqyiLnhziLe97Mq2+Sul5QgYVwfx/KYOXxv2T8ZmcR
+Ae9XFhZT4jsAOUDK1OXx9aZgDGJHJLNEVTe9zWv1ONFfNxEBxQgP7hhmDBWdtj6d
+taqEW/Jp06X+08BtnYK9NZsvDg2YRcvOHConeMjwvEL7tQK0m+GVyQfLYg6jnrhx
+egH+abucTKxabFcWSE+Vk0uJYMqcbXvB4WNKz9vj4V5Hn7/DN4xIjFko+nREw6Oa
+/AUFjNnO/FPjap+d68H1LdzMH3PSs+yjGid+6Zx9FCnt9qZydW13Miqg3nDnODXw
++Z682mQFjVlGPCA5ZOQbyMKY4tNazG2n8qy2famQT3+jF8Lb6a4NGbnpeWnLMkIu
+jWLWIkA9MlbdNXuajiPNVyYIK9gdoBzbfaKwoOfSsLxEqlf8rio1GGcEV5Hlz5S2
+txwI0xdW9MWeGWoiLbZSbRJH4TIBFFtoBG0LoEJi0C+UPwS8CDngJB4TyrZqEld3
+rH87W+Et1t/Nepoc/Eoaux9PFp5VPXP+qwQGmhir/hv7OsgBhrkYuhkjxZ8+1uk7
+tUWC/XM0mpLoxsq6vVl3AJaJe1ivdA9xLytsuG4iv02Juc593HXYR8yOpow0Eq2T
+U5EyeuFg5RXYwAPi7ykw1PW7zAPL4MlonEVz+QXOSx6eyhimp1VZC11SCg==
+-----END CERTIFICATE-----
+subject=CN=SnakeOil
+issuer=CN=SnakeOil
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: rsa_pss_rsae_sha256
+Negotiated TLS1.3 group: X25519MLKEM768
+---
+SSL handshake has read 3191 bytes and written 1613 bytes
+Verification error: self-signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Protocol: TLSv1.3
+Server public key is 4096 bit
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self-signed certificate)
+---
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: F37703F98479E72C609377584764475CF2C3CFE55A565552FBF6EBC20A9452FE
+    Session-ID-ctx: 
+    Resumption PSK: 717FB3A17D86787165128B8402392F46463A12149C767875461C51CC54C04BBE4C541E10896F68C9AC827E9F0B3468C6
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - e2 ac ee 2b ec c4 ab 07-97 13 6d 4e 14 30 95 ba   ...+......mN.0..
+    0010 - 18 87 a2 8f 14 16 eb c9-b4 82 9e 66 a8 c2 b5 db   ...........f....
+    0020 - 8a 82 ff 84 eb f6 e3 85-48 36 6b 2d 6f b5 06 81   ........H6k-o...
+    0030 - be 68 4d f8 42 d4 f9 37-de 93 20 28 07 2d 35 93   .hM.B..7.. (.-5.
+    0040 - c0 2c bf 59 45 44 6f f8-24 78 9a 6b 48 ae 40 38   .,.YEDo.$x.kH.@8
+    0050 - 62 ca a1 dd ba 5f fc 48-ab 98 3d d3 e3 09 f6 5c   b...._.H..=....\
+    0060 - 2e 1c 35 36 60 40 39 0a-cb bc 82 6e 52 43 5c ce   ..56`@9....nRC\.
+    0070 - b4 11 f1 6d 30 a4 ea 55-fe c8 5f f1 46 24 84 3b   ...m0..U.._.F$.;
+    0080 - 62 92 9e bd 9c b6 1c 3a-f3 8c 4c 69 e2 7c a1 f7   b......:..Li.|..
+    0090 - 2b 5a 6d 1b ad e3 d6 71-65 09 46 8b b7 36 2b be   +Zm....qe.F..6+.
+    00a0 - 0a 83 01 c9 10 fd 8f 75-ed 09 4a 74 da 94 47 92   .......u..Jt..G.
+    00b0 - 87 6c 2d e8 9d 19 00 1a-bf de fb 0d 65 54 60 44   .l-.........eT`D
+    00c0 - d2 5a f5 80 1f 7d 32 5d-45 09 af 40 e0 22 56 cf   .Z...}2]E..@."V.
+    00d0 - 3f 44 90 ca 4e 00 9c 62-81 e3 b8 e4 43 26 e2 a0   ?D..N..b....C&..
+
+    Start Time: 1789946332
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 8186DC6FEB27EE37E4C418FCCF7CE7EB9EE2C71FAAD91FEB312D4E347D7CF3B8
+    Session-ID-ctx: 
+    Resumption PSK: 8249B4E9C21BE7C486CA942CA5D591F7A30CF3C8C6933BB50AC3FC22354946D4E2A7FBB1003ECE3E93DDB6B1AAAB7E9B
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - e2 ac ee 2b ec c4 ab 07-97 13 6d 4e 14 30 95 ba   ...+......mN.0..
+    0010 - d8 7b db ba 76 38 40 f0-4c 9b 44 05 26 1a bb 1a   .{..v8@.L.D.&...
+    0020 - 40 a8 53 f7 81 27 74 c7-70 9f f5 d5 db 9f 06 80   @.S..'t.p.......
+    0030 - 29 53 13 1b ec 76 7d 34-21 53 42 83 44 37 e5 46   )S...v}4!SB.D7.F
+    0040 - 30 85 3f b4 fb 70 06 14-53 55 99 59 55 c5 ae 89   0.?..p..SU.YU...
+    0050 - dd d7 47 30 a9 93 34 65-58 31 98 36 61 ba f5 83   ..G0..4eX1.6a...
+    0060 - ba 1c 47 c9 6e dd 12 15-67 05 0e 10 46 61 12 36   ..G.n...g...Fa.6
+    0070 - d2 79 f6 86 07 16 ac 68-8a 69 94 9d 85 ad c8 e0   .y.....h.i......
+    0080 - 21 40 2f 30 62 e1 1b f9-6f d3 36 e8 aa 2f 41 fd   !@/0b...o.6../A.
+    0090 - 38 dd 04 0a a0 95 e4 fa-92 c9 fd a8 16 ad f0 8c   8...............
+    00a0 - 10 fb 8b 4d d1 e0 c2 fd-6e 55 33 1a c6 6e 96 66   ...M....nU3..n.f
+    00b0 - 11 0c a9 00 89 6d 71 22-6b 2a c6 d4 b3 84 bc 28   .....mq"k*.....(
+    00c0 - a5 c7 5a 09 b8 69 76 09-14 95 71 dd 94 ef c4 8e   ..Z..iv...q.....
+    00d0 - c9 82 cd cc 43 61 67 54-f3 19 44 7f 18 64 47 5c   ....CagT..D..dG\
+
+    Start Time: 1789946332
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+kS0Hf0u5HiXFwKMKFqXvPdOTNGGa0X8V
+KEYUPDATE
+closed
+bandit16@bandit:~$ openssl s_client -connect localhost:31691
+Connecting to 127.0.0.1
+CONNECTED(00000003)
+40D7E7F7FF7F0000:error:0A0000F4:SSL routines:ossl_statem_client_read_transition:unexpected message:../ssl/statem/statem_clnt.c:423:
+---
+no peer certificate available
+---
+No client certificate CA names sent
+Negotiated TLS1.3 group: <NULL>
+---
+SSL handshake has read 1533 bytes and written 1540 bytes
+Verification: OK
+---
+New, (NONE), Cipher is (NONE)
+Protocol: TLSv1.3
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+---
+
+bandit16@bandit:~$ ncat -C --ssl localhost 31790
+kS0Hf0u5HiXFwKMKFqXvPdOTNGGa0X8V
+Correct!
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+
