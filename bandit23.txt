@@ -1,0 +1,52 @@
+
+cd /tmp
+mktemp -d
+
+bandit23@bandit:/tmp/tmp.OHIEMkyQ5Q$ cat /etc/cron.d/cronjob_bandit24
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+
+bandit23@bandit:/tmp/tmp.OHIEMkyQ5Q$ cat /usr/bin/cronjob_bandit24.sh
+#!/bin/bash
+
+shopt -s nullglob
+
+myname=$(whoami)
+
+cd /var/spool/"$myname"/foo || exit
+echo "Executing and deleting all scripts in /var/spool/$myname/foo:"
+for i in * .*;
+do
+    if [ "$i" != "." ] && [ "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" "./$i")"
+        if [ "${owner}" = "bandit23" ] && [ -f "$i" ]; then
+            timeout -s 9 60 "./$i"
+        fi
+        rm -rf "./$i"
+    fi
+
+donebandit23@bandit:/tmp/tmp.OHIEMkyQ5Q$ cat << 'EOF' > b
+#!/bin/bash
+
+DIR=/tmp/tmp.OHIEMkyQ5Q
+PASSFILE=$DIR/b.password
+
+echo Copying file > $DIR/b.log
+
+cp /etc/bandit_pass/bandit24 $PASSFILE
+
+chown bandit23 $PASSFILE
+chmod 0555 $PASSFILE
+EOF
+
+bandit23@bandit:/tmp/tmp.OHIEMkyQ5Q$ chmod +x b
+bandit23@bandit:/tmp/tmp.OHIEMkyQ5Q$ cp b /var/spool/bandit24/food
+
+# wait 1 minute for cron to complete
+
+bandit23@bandit:/tmp/tmp.OHIEMkyQ5Q$ cat b.password
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv
+
+password for bandit24: hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv

