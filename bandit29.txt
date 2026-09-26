@@ -1,0 +1,88 @@
+Same idea as before, only the file was deleted.
+Show all commits: git show --all --
+Then see each commit: git show <commit-ID>
+
+tim@astrazeek:/tmp/tmp.airQOW80hy/repo$ git log --full-history --
+commit b607fba0c867d0bbdf4b4a5e62cd04b79c8fea83 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ben Dover <noone@overthewire.org>
+Date:   Wed Jun 24 14:59:22 2026 +0000
+
+    fix username
+
+commit 84c16f8255d7a07c45b96a1780234ed20f7457b7
+Author: Ben Dover <noone@overthewire.org>
+Date:   Wed Jun 24 14:59:22 2026 +0000
+
+    initial commit of README.md
+tim@astrazeek:/tmp/tmp.airQOW80hy/repo$ git log --all
+commit b607fba0c867d0bbdf4b4a5e62cd04b79c8fea83 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ben Dover <noone@overthewire.org>
+Date:   Wed Jun 24 14:59:22 2026 +0000
+
+    fix username
+
+commit 0bf8160435c51882945ce56ae74a2798dd3c57f3 (origin/dev)
+Author: Morla Porla <morla@overthewire.org>
+Date:   Wed Jun 24 14:59:22 2026 +0000
+
+    add data needed for development
+
+commit a0e9e9cf26049c01ef907765cd3af58521495b31 (origin/sploits-dev)
+Author: Morla Porla <morla@overthewire.org>
+Date:   Wed Jun 24 14:59:22 2026 +0000
+
+    add some silly exploit, just for shit and giggles
+
+commit 84c16f8255d7a07c45b96a1780234ed20f7457b7
+Author: Ben Dover <noone@overthewire.org>
+Date:   Wed Jun 24 14:59:22 2026 +0000
+
+    initial commit of README.md
+
+commit 1b95ced7d4caee2ac19f5293d0533700e55ebf3b
+Author: Ben Dover <noone@overthewire.org>
+Date:   Wed Jun 24 14:59:22 2026 +0000
+
+    add gif2ascii
+tim@astrazeek:/tmp/tmp.airQOW80hy/repo$ git show b607fba0c867d0bbdf4b4a5e62cd04b79c8fea83
+commit b607fba0c867d0bbdf4b4a5e62cd04b79c8fea83 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ben Dover <noone@overthewire.org>
+Date:   Wed Jun 24 14:59:22 2026 +0000
+
+    fix username
+
+diff --git a/README.md b/README.md
+index 2da2f39..1af21d3 100644
+--- a/README.md
++++ b/README.md
+@@ -3,6 +3,6 @@ Some notes for bandit30 of bandit.
+
+ ## credentials
+
+-- username: bandit29
++- username: bandit30
+ - password: <no passwords in production!>
+
+
+
+tim@astrazeek:/tmp/tmp.airQOW80hy/repo$ git show 0bf8160435c51882945ce56ae74a2798dd3c57f3
+commit 0bf8160435c51882945ce56ae74a2798dd3c57f3 (origin/dev)
+Author: Morla Porla <morla@overthewire.org>
+Date:   Wed Jun 24 14:59:22 2026 +0000
+
+    add data needed for development
+
+diff --git a/README.md b/README.md
+index 1af21d3..d395d04 100644
+--- a/README.md
++++ b/README.md
+@@ -4,5 +4,5 @@ Some notes for bandit30 of bandit.
+ ## credentials
+
+ - username: bandit30
+-- password: <no passwords in production!>
++- password: jq9Dfg2rXsfYsWMgFuKlXhphjdH7USgX
+
+
+password for bandit30: jq9Dfg2rXsfYsWMgFuKlXhphjdH7USgX
+

