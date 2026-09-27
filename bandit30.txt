@@ -1,0 +1,13 @@
+
+Clone repo
+
+cd `mktemp -d`
+
+git clone ssh://bandit30-git@bandit.labs.overthewire.org:2220/home/bandit30-git/repo
+
+tim@astrazeek:/tmp/tmp.VyHUtOdD6m/repo$ git tag
+secret
+tim@astrazeek:/tmp/tmp.VyHUtOdD6m/repo$ git show secret
+82NkymblpGBYmIXG6ZQ8YldBYstHpfUf
+
+password for bandit31: 82NkymblpGBYmIXG6ZQ8YldBYstHpfUf
