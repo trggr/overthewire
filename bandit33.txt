@@ -1,0 +1,35 @@
+When you are logged to bandit32, the starting shell
+is uppershell with an -s bit. uppershell is owned
+by bandit33, and once you break from it, it drops
+you to bandit33 home directory with privileges of bandit33.
+
+To break from uppershell, type $0. $0 is the name of
+the starting shell (sh). Start bash from sh, and
+the rest is simple:
+
+cat /etc/bandit_pass/bandit33
+
+bandit33@bandit:~$ cat /etc/bandit_pass/bandit
+bandit0   bandit14  bandit2   bandit25  bandit30  bandit6
+bandit1   bandit15  bandit20  bandit26  bandit31  bandit7
+bandit10  bandit16  bandit21  bandit27  bandit32  bandit8
+bandit11  bandit17  bandit22  bandit28  bandit33  bandit9
+bandit12  bandit18  bandit23  bandit29  bandit4
+bandit13  bandit19  bandit24  bandit3   bandit5
+bandit33@bandit:~$ cat /etc/bandit_pass/bandit33
+
+u4P2CyPOwPGLe94RdD9Uo2FxFwvnFswM
+
+password for bandit33: u4P2CyPOwPGLe94RdD9Uo2FxFwvnFswM
+
+
+bandit33@bandit:~$ cat README.txt
+Congratulations on solving the last level of this game!
+
+At this moment, there are no more levels to play in this game. However, we are constantly working
+on new levels and will most likely expand this game with more levels soon.
+Keep an eye out for an announcement on our usual communication channels!
+In the meantime, you could play some of our other wargames.
+
+If you have an idea for an awesome new level, please let us know!
+
